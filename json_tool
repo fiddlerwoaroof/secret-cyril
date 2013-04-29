@@ -1,0 +1,11 @@
+import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('keys', action='store', nargs='+')
+options = parser.parse_args()
+
+import sys
+for line in sys.stdin:
+	jsn = json.loads(line)
+	print '\t'.join(jsn.get(k,'') for k in options.keys)
